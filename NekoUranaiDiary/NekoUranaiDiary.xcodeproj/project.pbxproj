@@ -15,6 +15,7 @@
 		F30BEEDD2FEEED5D00A328D1 /* MoodFortuneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BEEE22FEEED5D00A328D1 /* MoodFortuneView.swift */; };
 		F30BEEDE2FEEED5D00A328D1 /* CatCardDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BEEE32FEEED5D00A328D1 /* CatCardDrawView.swift */; };
 		F30BEEDF2FEEED5D00A328D1 /* CatCardGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BEEE42FEEED5D00A328D1 /* CatCardGenerator.swift */; };
+		F30BEEE72FEEED5D00A328D1 /* CatCardSelectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BEEE62FEEED5D00A328D1 /* CatCardSelectionStore.swift */; };
 		F30BEEE02FEEED5D00A328D1 /* AppRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BEEE52FEEED5D00A328D1 /* AppRoute.swift */; };
 		F30BEEC52FEEED5D00A328D1 /* ConcernCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BEE972FEEED5D00A328D1 /* ConcernCategory.swift */; };
 		F30BEEC62FEEED5D00A328D1 /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30BEEA72FEEED5D00A328D1 /* DummyData.swift */; };
@@ -69,6 +70,7 @@
 		F30BEEE22FEEED5D00A328D1 /* MoodFortuneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodFortuneView.swift; sourceTree = "<group>"; };
 		F30BEEE32FEEED5D00A328D1 /* CatCardDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCardDrawView.swift; sourceTree = "<group>"; };
 		F30BEEE42FEEED5D00A328D1 /* CatCardGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCardGenerator.swift; sourceTree = "<group>"; };
+		F30BEEE62FEEED5D00A328D1 /* CatCardSelectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatCardSelectionStore.swift; sourceTree = "<group>"; };
 		F30BEEE52FEEED5D00A328D1 /* AppRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoute.swift; sourceTree = "<group>"; };
 		F30BEEB52FEEED5D00A328D1 /* PastLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastLogView.swift; sourceTree = "<group>"; };
 		F30BEEB72FEEED5D00A328D1 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				F30BEEE42FEEED5D00A328D1 /* CatCardGenerator.swift */,
+				F30BEEE62FEEED5D00A328D1 /* CatCardSelectionStore.swift */,
 				F30BEEA42FEEED5D00A328D1 /* AdService.swift */,
 				F30BEEA52FEEED5D00A328D1 /* AIConfig.swift */,
 				F30BEEA62FEEED5D00A328D1 /* AIService.swift */,
@@ -345,6 +348,7 @@
 				F30BEEE02FEEED5D00A328D1 /* AppRoute.swift in Sources */,
 				F30BEEDE2FEEED5D00A328D1 /* CatCardDrawView.swift in Sources */,
 				F30BEEDF2FEEED5D00A328D1 /* CatCardGenerator.swift in Sources */,
+				F30BEEE72FEEED5D00A328D1 /* CatCardSelectionStore.swift in Sources */,
 				F30BEEDC2FEEED5D00A328D1 /* HomeHubView.swift in Sources */,
 				F30BEEDD2FEEED5D00A328D1 /* MoodFortuneView.swift in Sources */,
 				F30BEEC52FEEED5D00A328D1 /* ConcernCategory.swift in Sources */,

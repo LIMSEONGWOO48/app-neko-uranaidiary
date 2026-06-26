@@ -74,9 +74,10 @@ enum FortuneGenerator {
         mood: Mood,
         category: ConcernCategory,
         memo: String?,
-        birthday: Date
+        birthday: Date,
+        seedSalt: UInt64 = 0
     ) -> LocalFortuneBase {
-        let seed = dailySeed(birthday: birthday, mood: mood, category: category)
+        let seed = dailySeed(birthday: birthday, mood: mood, category: category) ^ seedSalt
         var generator = SeededRandomNumberGenerator(seed: seed)
 
         let baseScore = baseScore(for: mood)
@@ -124,12 +125,17 @@ enum FortuneGenerator {
         return FortuneComposer.compose(local: local, aiText: nil)
     }
 
-    private static func dailySeed(birthday: Date, mood: Mood, category: ConcernCategory) -> UInt64 {
+    private static func dailySeed(
+        birthday: Date,
+        mood: Mood,
+        category: ConcernCategory,
+        seedSalt: UInt64 = 0
+    ) -> UInt64 {
         let day = UInt64(Calendar.current.startOfDay(for: .now).timeIntervalSince1970)
         let birthDay = UInt64(Calendar.current.startOfDay(for: birthday).timeIntervalSince1970)
         let moodHash = stableHash(mood.rawValue)
         let categoryHash = stableHash(category.rawValue)
-        return day ^ birthDay ^ moodHash ^ categoryHash
+        return day ^ birthDay ^ moodHash ^ categoryHash ^ seedSalt
     }
 
     private static func stableHash(_ value: String) -> UInt64 {
