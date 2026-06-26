@@ -40,6 +40,9 @@ struct HomeHubView: View {
                 ensureUsageLimit()
                 loadTodayCard()
             }
+            .onChange(of: path.count) { _, _ in
+                loadTodayCard()
+            }
             .navigationDestination(for: AppRoute.self) { route in
                 switch route {
                 case .moodFortune:
@@ -102,7 +105,7 @@ struct HomeHubView: View {
                     Text("今日の猫カード")
                         .font(.headline)
                     Spacer()
-                    Text("1日1回")
+                    Text("5枚から1枚")
                         .font(.caption)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 4)
@@ -110,7 +113,7 @@ struct HomeHubView: View {
                         .clipShape(Capsule())
                 }
 
-                Text("誕生日と今日の日付から、あなた専用の猫カードが決まるにゃ。")
+                Text("今日のデッキから気になる猫カードを1枚選んで占うにゃ。")
                     .font(.subheadline)
                     .foregroundStyle(AppTheme.secondaryText)
 
@@ -210,7 +213,11 @@ struct HomeHubView: View {
 
     private func loadTodayCard() {
         guard let profile else { return }
-        todayCard = CatCardGenerator.generate(profile: profile)
+        if CatCardSelectionStore.load(userId: profile.userId) != nil {
+            todayCard = CatCardGenerator.generate(profile: profile)
+        } else {
+            todayCard = nil
+        }
     }
 
     private func modeRow(

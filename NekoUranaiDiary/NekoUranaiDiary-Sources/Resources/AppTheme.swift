@@ -62,16 +62,92 @@ struct MeowAvatarView: View {
   var showGlow: Bool = true
 
   var body: some View {
-    Image("MeowAvatar")
-      .resizable()
-      .scaledToFill()
-      .frame(width: size, height: size)
-      .clipShape(Circle())
+    ZStack {
+      Circle()
+        .fill(
+          LinearGradient(
+            colors: [AppTheme.backgroundGradientTop, AppTheme.backgroundGradientBottom],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+          )
+        )
+
+      Image("MeowAvatar")
+        .resizable()
+        .scaledToFill()
+    }
+    .frame(width: size, height: size)
+    .clipShape(Circle())
+    .overlay {
+      Circle()
+        .strokeBorder(AppTheme.gold.opacity(0.85), lineWidth: max(2, size * 0.035))
+    }
+    .shadow(color: AppTheme.accent.opacity(showGlow ? 0.35 : 0), radius: 12, y: 4)
+  }
+}
+
+struct MeowHeroView: View {
+  var maxHeight: CGFloat = 280
+
+  var body: some View {
+    ZStack {
+      Ellipse()
+        .fill(
+          RadialGradient(
+            colors: [AppTheme.accentLight.opacity(0.28), .clear],
+            center: .center,
+            startRadius: 24,
+            endRadius: maxHeight * 0.52
+          )
+        )
+        .frame(width: maxHeight * 1.05, height: maxHeight * 0.48)
+        .offset(y: maxHeight * 0.12)
+
+      Image("MeowHero")
+        .resizable()
+        .scaledToFit()
+        .frame(maxHeight: maxHeight)
+    }
+    .shadow(color: AppTheme.accent.opacity(0.22), radius: 14, y: 6)
+  }
+}
+
+struct TarotCardBackView: View {
+  var index: Int
+  var isSelected: Bool = false
+  var isDimmed: Bool = false
+
+  var body: some View {
+    RoundedRectangle(cornerRadius: 14)
+      .fill(AppTheme.cardGradient)
+      .frame(width: 88, height: 128)
       .overlay {
-        Circle()
-          .strokeBorder(AppTheme.gold.opacity(0.85), lineWidth: max(2, size * 0.035))
+        VStack(spacing: 8) {
+          Image(systemName: "moon.stars.fill")
+            .font(.title3)
+            .foregroundStyle(AppTheme.gold)
+
+          HStack(spacing: 4) {
+            ForEach(0..<3, id: \.self) { _ in
+              Image(systemName: "star.fill")
+                .font(.caption2)
+                .foregroundStyle(AppTheme.gold.opacity(0.85))
+            }
+          }
+
+          Text("\(index + 1)")
+            .font(.caption.bold())
+            .foregroundStyle(.white.opacity(0.9))
+        }
       }
-      .shadow(color: AppTheme.accent.opacity(showGlow ? 0.35 : 0), radius: 12, y: 4)
+      .overlay {
+        RoundedRectangle(cornerRadius: 14)
+          .strokeBorder(AppTheme.gold.opacity(isSelected ? 1 : 0.5), lineWidth: isSelected ? 2.5 : 1)
+      }
+      .shadow(color: AppTheme.accent.opacity(isSelected ? 0.45 : 0.25), radius: isSelected ? 12 : 6, y: 4)
+      .scaleEffect(isSelected ? 1.08 : 1)
+      .opacity(isDimmed ? 0.45 : 1)
+      .animation(.spring(response: 0.35, dampingFraction: 0.75), value: isSelected)
   }
 }
 
