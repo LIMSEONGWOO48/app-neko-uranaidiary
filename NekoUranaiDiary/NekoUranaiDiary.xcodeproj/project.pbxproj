@@ -101,7 +101,7 @@
 			children = (
 				F30BEE402FEED9C600A328D1 /* NekoUranaiDiary */,
 				F30BEE3F2FEED9C600A328D1 /* Products */,
-				F30BEEBF2FEEED5D00A328D1 /* NekoUranaiDiary-Sources 2 */,
+				F30BEEBF2FEEED5D00A328D1 /* NekoUranaiDiary-Sources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -252,7 +252,7 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		F30BEEBF2FEEED5D00A328D1 /* NekoUranaiDiary-Sources 2 */ = {
+		F30BEEBF2FEEED5D00A328D1 /* NekoUranaiDiary-Sources */ = {
 			isa = PBXGroup;
 			children = (
 				F30BEE962FEEED5D00A328D1 /* App */,
@@ -261,7 +261,7 @@
 				F30BEEAC2FEEED5D00A328D1 /* Services */,
 				F30BEEBE2FEEED5D00A328D1 /* Views */,
 			);
-			path = "NekoUranaiDiary-Sources 2";
+			path = "NekoUranaiDiary-Sources";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

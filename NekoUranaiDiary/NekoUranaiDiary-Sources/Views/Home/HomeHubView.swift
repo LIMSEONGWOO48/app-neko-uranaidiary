@@ -32,8 +32,10 @@ struct HomeHubView: View {
                 }
                 .padding(20)
             }
-            .background(AppTheme.background.ignoresSafeArea())
+            .background(AppTheme.screenBackground)
             .navigationTitle("猫占い日記")
+            .toolbarBackground(AppTheme.backgroundGradientTop.opacity(0.95), for: .navigationBar)
+            .toolbarColorScheme(.light, for: .navigationBar)
             .onAppear {
                 ensureUsageLimit()
                 loadTodayCard()
@@ -65,18 +67,29 @@ struct HomeHubView: View {
 
     private var headerSection: some View {
         CatCard {
-            VStack(alignment: .leading, spacing: 8) {
-                if let profile {
-                    Text("おかえりにゃ、\(profile.nickname) 🐾")
-                        .font(.title3.bold())
-                }
-                Text("今日も1分だけ、自分と向き合う時間にゃ。")
-                    .foregroundStyle(AppTheme.secondaryText)
+            HStack(alignment: .top, spacing: 14) {
+                MeowAvatarView(size: 72)
 
-                if let profile {
-                    Text("誕生日: \(profile.birthday, format: .dateTime.month().day())")
-                        .font(.caption)
+                VStack(alignment: .leading, spacing: 8) {
+                    if let profile {
+                        Text("おかえりにゃ、\(profile.nickname) 🐾")
+                            .font(.title3.bold())
+                            .foregroundStyle(AppTheme.accentDark)
+                    }
+
+                    Text(MeowCharacter.greeting)
+                        .font(.subheadline)
                         .foregroundStyle(AppTheme.accent)
+
+                    Text("今日も1分だけ、自分と向き合う時間にゃ。")
+                        .font(.caption)
+                        .foregroundStyle(AppTheme.secondaryText)
+
+                    if let profile {
+                        Text("誕生日: \(profile.birthday, format: .dateTime.month().day())")
+                            .font(.caption2)
+                            .foregroundStyle(AppTheme.gold)
+                    }
                 }
             }
         }

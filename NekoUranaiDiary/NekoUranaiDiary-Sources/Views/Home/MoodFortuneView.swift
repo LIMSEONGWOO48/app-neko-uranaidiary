@@ -38,7 +38,7 @@ struct MoodFortuneView: View {
             }
             .padding(20)
         }
-        .background(AppTheme.background.ignoresSafeArea())
+        .background(AppTheme.screenBackground)
         .navigationTitle("気分で占う")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {

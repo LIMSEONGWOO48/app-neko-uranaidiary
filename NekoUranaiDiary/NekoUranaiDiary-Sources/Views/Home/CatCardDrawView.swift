@@ -35,24 +35,19 @@ struct CatCardDrawView: View {
             } else {
                 VStack(spacing: 12) {
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(
-                            LinearGradient(
-                                colors: [AppTheme.accent.opacity(0.8), AppTheme.accent.opacity(0.5)],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
+                        .fill(AppTheme.cardGradient)
                         .frame(width: 200, height: 280)
                         .overlay {
-                            VStack(spacing: 8) {
-                                Text("🐾")
-                                    .font(.largeTitle)
+                            VStack(spacing: 10) {
+                                MeowAvatarView(size: 72, showGlow: false)
                                 Text("Tap!")
                                     .font(.caption.bold())
-                                    .foregroundStyle(.white.opacity(0.9))
+                                    .foregroundStyle(.white.opacity(0.95))
+                                Image(systemName: "sparkles")
+                                    .foregroundStyle(AppTheme.gold)
                             }
                         }
-                        .shadow(radius: 8)
+                        .shadow(color: AppTheme.accent.opacity(0.35), radius: 12, y: 6)
 
                     Text("タップして猫カードを開くにゃ")
                         .foregroundStyle(AppTheme.secondaryText)
@@ -77,7 +72,7 @@ struct CatCardDrawView: View {
         }
         .padding(20)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(AppTheme.background.ignoresSafeArea())
+        .background(AppTheme.screenBackground)
         .navigationTitle("猫カード")
         .navigationBarTitleDisplayMode(.inline)
         .contentShape(Rectangle())
