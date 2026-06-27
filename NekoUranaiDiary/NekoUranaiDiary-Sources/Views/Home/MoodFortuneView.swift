@@ -14,6 +14,7 @@ struct MoodFortuneView: View {
     @State private var memo = ""
     @State private var isGeneratingFortune = false
     @State private var limitMessage: String?
+    @FocusState private var isMemoFocused: Bool
 
     private var profile: UserProfile? { profiles.first }
 
@@ -33,7 +34,9 @@ struct MoodFortuneView: View {
                 headerSection
                 moodSection
                 categorySection
-                memoSection
+                if shouldShowMemoField {
+                    memoSection
+                }
                 fortuneSection
             }
             .padding(20)
@@ -122,12 +125,17 @@ struct MoodFortuneView: View {
         }
     }
 
+    private var shouldShowMemoField: Bool {
+        usageStatus?.canFortune ?? true
+    }
+
     private var memoSection: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("一言メモ（任意）")
                 .font(.headline)
             TextField("今日のことをひとこと...", text: $memo, axis: .vertical)
                 .lineLimit(3...5)
+                .focused($isMemoFocused)
                 .padding(12)
                 .background(AppTheme.cardBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -185,7 +193,11 @@ struct MoodFortuneView: View {
         guard let todayLog else { return }
         selectedMood = todayLog.moodEnum
         selectedCategory = todayLog.concernCategoryEnum
-        memo = todayLog.memo ?? ""
+    }
+
+    private func clearMemoInput() {
+        memo = ""
+        isMemoFocused = false
     }
 
     private func performFortune() async {
@@ -204,6 +216,7 @@ struct MoodFortuneView: View {
         let memoValue = trimmedMemo.isEmpty ? nil : trimmedMemo
 
         if let todayLog, inputsMatchTodayLog(todayLog, memo: memoValue) {
+            clearMemoInput()
             path.append(AppRoute.fortune(todayLog.asFortuneResult))
             return
         }
@@ -230,6 +243,7 @@ struct MoodFortuneView: View {
             memo: memoValue
         )
 
+        clearMemoInput()
         path.append(AppRoute.fortune(fortune))
     }
 
@@ -272,9 +286,15 @@ struct MoodFortuneView: View {
     }
 
     private func inputsMatchTodayLog(_ log: DailyLog, memo: String?) -> Bool {
-        log.moodEnum == selectedMood
-            && log.concernCategoryEnum == selectedCategory
-            && (log.memo ?? "") == (memo ?? "")
+        guard log.moodEnum == selectedMood,
+              log.concernCategoryEnum == selectedCategory else { return false }
+
+        let currentMemo = memo ?? ""
+        let savedMemo = log.memo ?? ""
+        if currentMemo.isEmpty {
+            return true
+        }
+        return currentMemo == savedMemo
     }
 }
 
