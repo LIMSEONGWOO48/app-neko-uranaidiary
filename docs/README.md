@@ -53,6 +53,7 @@ docs/
 | ファイル | 内容 |
 |----------|------|
 | [pr-4-memo-clear-after-fortune.md](./pr/pr-4-memo-clear-after-fortune.md) | PR4: 気分占いメモ送信後クリア |
+| [pr-5-guardian-cat-png-assets.md](./pr/pr-5-guardian-cat-png-assets.md) | PR5: 守護猫カード PNG イラスト表示 |
 
 **更新タイミング:** PR作成・マージ時に `pr-N-短い説明.md` を追加
 
