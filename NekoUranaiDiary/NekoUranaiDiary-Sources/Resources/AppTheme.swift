@@ -136,6 +136,35 @@ struct MoodIconView: View {
   }
 }
 
+struct GuardianCatCardView: View {
+  let cardName: String
+  let imageAssetName: String
+  var theme: String? = nil
+  var imageHeight: CGFloat = 140
+  var showName: Bool = true
+
+  var body: some View {
+    VStack(spacing: 10) {
+      Image(imageAssetName)
+        .resizable()
+        .scaledToFit()
+        .frame(maxHeight: imageHeight)
+
+      if showName {
+        Text(cardName)
+          .font(.title3.bold())
+          .foregroundStyle(AppTheme.secondaryText)
+      }
+
+      if let theme {
+        Text("キーワード: \(theme)")
+          .font(.subheadline)
+          .foregroundStyle(AppTheme.accent)
+      }
+    }
+  }
+}
+
 struct TarotCardBackView: View {
   var index: Int
   var isSelected: Bool = false

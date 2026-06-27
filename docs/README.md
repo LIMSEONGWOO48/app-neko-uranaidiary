@@ -21,6 +21,12 @@ docs/
 | AI相談の処理フロー・API | [specs/ai-consultation.md](./specs/ai-consultation.md) |
 | 特定PRで何を変えたか | [pr/](./pr/) 内の `pr-N-*.md` |
 
+## ソース・素材
+
+| 種類 | パス |
+|------|------|
+| 守護猫カード PNG | [assets/guardian-cats/](../assets/guardian-cats/) |
+
 ## ドキュメントの役割
 
 ### planning/ — 企画・設計

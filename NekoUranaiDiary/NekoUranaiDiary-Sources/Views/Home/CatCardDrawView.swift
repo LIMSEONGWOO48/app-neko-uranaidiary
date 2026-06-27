@@ -81,16 +81,13 @@ struct CatCardDrawView: View {
     private func revealedSection(card: CatCardResult) -> some View {
         VStack(spacing: 20) {
             VStack(spacing: 16) {
-                Text(card.cardEmoji)
-                    .font(.system(size: 72))
-                    .transition(.scale.combined(with: .opacity))
-
-                Text(card.cardName)
-                    .font(.title.bold())
-
-                Text("今日のキーワード: \(card.theme)")
-                    .font(.subheadline)
-                    .foregroundStyle(AppTheme.accent)
+                GuardianCatCardView(
+                    cardName: card.cardName,
+                    imageAssetName: card.imageAssetName,
+                    theme: card.theme,
+                    imageHeight: 170
+                )
+                .transition(.scale.combined(with: .opacity))
 
                 Text(card.fortune.oneLiner)
                     .font(.headline)
