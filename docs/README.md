@@ -21,6 +21,12 @@ docs/
 | AI相談の処理フロー・API | [specs/ai-consultation.md](./specs/ai-consultation.md) |
 | 特定PRで何を変えたか | [pr/](./pr/) 内の `pr-N-*.md` |
 
+## ソース・素材
+
+| 種類 | パス |
+|------|------|
+| 守護猫カード PNG | [assets/guardian-cats/](../assets/guardian-cats/) |
+
 ## ドキュメントの役割
 
 ### planning/ — 企画・設計
@@ -47,6 +53,7 @@ docs/
 | ファイル | 内容 |
 |----------|------|
 | [pr-4-memo-clear-after-fortune.md](./pr/pr-4-memo-clear-after-fortune.md) | PR4: 気分占いメモ送信後クリア |
+| [pr-5-guardian-cat-png-assets.md](./pr/pr-5-guardian-cat-png-assets.md) | PR5: 守護猫カード PNG イラスト表示 |
 
 **更新タイミング:** PR作成・マージ時に `pr-N-短い説明.md` を追加
 

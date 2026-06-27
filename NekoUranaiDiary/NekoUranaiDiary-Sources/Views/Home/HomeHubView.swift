@@ -118,9 +118,12 @@ struct HomeHubView: View {
                     .foregroundStyle(AppTheme.secondaryText)
 
                 if let todayCard {
-                    HStack(spacing: 12) {
-                        Text(todayCard.cardEmoji)
-                            .font(.system(size: 40))
+                    HStack(alignment: .center, spacing: 12) {
+                        Image(todayCard.imageAssetName)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 72, height: 72)
+
                         VStack(alignment: .leading, spacing: 4) {
                             Text(todayCard.cardName)
                                 .font(.headline)

@@ -3,7 +3,7 @@ import Foundation
 struct CatCardResult: Identifiable, Hashable {
     let deckIndex: Int
     let cardName: String
-    let cardEmoji: String
+    let imageAssetName: String
     let theme: String
     let fortune: FortuneResult
 
@@ -24,23 +24,23 @@ enum CatCardGenerator {
         "やすらぎの五枚"
     ]
 
-    private static let cards: [(name: String, emoji: String, theme: String)] = [
-        ("みけ猫", "🐱", "好奇心"),
-        ("しろ猫", "😺", "やさしさ"),
-        ("くろ猫", "🐈‍⬛", "直感"),
-        ("トラ猫", "🐯", "チャレンジ"),
-        ("ペルシャ猫", "😸", "ゆったり"),
-        ("サバ猫", "😽", "信頼"),
-        ("ルナ猫", "🌙", "ひらめき"),
-        ("スター猫", "⭐", "希望"),
-        ("シャム猫", "🐈", "気品"),
-        ("マーブル猫", "🎀", "祝福"),
-        ("ミスト猫", "🌫️", "浄化"),
-        ("ガーデン猫", "🌸", "成長"),
-        ("クローバー猫", "🍀", "幸運"),
-        ("オーロラ猫", "🌈", "変化"),
-        ("パール猫", "💎", "冷静"),
-        ("ソラ猫", "☁️", "自由")
+    private static let cards: [(name: String, asset: String, theme: String)] = [
+        ("みけ猫", "GuardianMikeNeko", "好奇心"),
+        ("しろ猫", "GuardianShiroNeko", "やさしさ"),
+        ("くろ猫", "GuardianKuroNeko", "直感"),
+        ("トラ猫", "GuardianToraNeko", "チャレンジ"),
+        ("ペルシャ猫", "GuardianPersianNeko", "ゆったり"),
+        ("サバ猫", "GuardianSabaNeko", "信頼"),
+        ("ルナ猫", "GuardianLunaNeko", "ひらめき"),
+        ("スター猫", "GuardianStarNeko", "希望"),
+        ("シャム猫", "GuardianSiamNeko", "気品"),
+        ("マーブル猫", "GuardianMarbleNeko", "祝福"),
+        ("ミスト猫", "GuardianMistNeko", "浄化"),
+        ("ガーデン猫", "GuardianGardenNeko", "成長"),
+        ("クローバー猫", "GuardianCloverNeko", "幸運"),
+        ("オーロラ猫", "GuardianAuroraNeko", "変化"),
+        ("パール猫", "GuardianPearlNeko", "冷静"),
+        ("ソラ猫", "GuardianSoraNeko", "自由")
     ]
 
     private static let themeAdvices: [String: [String]] = [
@@ -171,7 +171,7 @@ enum CatCardGenerator {
     private static func buildResult(
         profile: UserProfile,
         deckIndex: Int,
-        card: (name: String, emoji: String, theme: String),
+        card: (name: String, asset: String, theme: String),
         generator: inout SeededRandomNumberGenerator
     ) -> CatCardResult {
         let cardSalt = stableHash(card.name) ^ UInt64(deckIndex &+ 1) ^ 0xCA7D0000
@@ -207,7 +207,7 @@ enum CatCardGenerator {
         return CatCardResult(
             deckIndex: deckIndex,
             cardName: card.name,
-            cardEmoji: card.emoji,
+            imageAssetName: card.asset,
             theme: card.theme,
             fortune: fortune
         )

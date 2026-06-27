@@ -12,3 +12,4 @@
 | 現行機能仕様 | [docs/specs/features.md](./docs/specs/features.md) |
 | AI相談ロジック | [docs/specs/ai-consultation.md](./docs/specs/ai-consultation.md) |
 | PR変更記録 | [docs/pr/](./docs/pr/) |
+| 守護猫イメージ素材 | [assets/guardian-cats/](./assets/guardian-cats/) |

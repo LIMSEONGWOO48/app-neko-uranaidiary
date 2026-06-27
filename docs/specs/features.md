@@ -104,26 +104,28 @@
 デッキは下記 **16種類** から毎日5枚が選ばれる。同じ日の5枚内では **守護猫は重複しない**。  
 5枚の組み合わせは **4,368通り**（C(16,5)）あり、長期利用でも被りにくい。
 
-| 守護猫 | キーワード |
-|--------|------------|
-| みけ猫 🐱 | 好奇心 |
-| しろ猫 😺 | やさしさ |
-| くろ猫 🐈‍⬛ | 直感 |
-| トラ猫 🐯 | チャレンジ |
-| ペルシャ猫 😸 | ゆったり |
-| サバ猫 😽 | 信頼 |
-| ルナ猫 🌙 | ひらめき |
-| スター猫 ⭐ | 希望 |
-| シャム猫 🐈 | 気品 |
-| マーブル猫 🎀 | 祝福 |
-| ミスト猫 🌫️ | 浄化 |
-| ガーデン猫 🌸 | 成長 |
-| クローバー猫 🍀 | 幸運 |
-| オーロラ猫 🌈 | 変化 |
-| パール猫 💎 | 冷静 |
-| ソラ猫 ☁️ | 自由 |
+表示は **PNGイラスト + テキスト**（絵文字は使わない）。素材は `assets/guardian-cats/`、アプリ内は `Assets.xcassets` の `Guardian*` 画像。
 
-**開封後に見えるもの:** 守護猫・キーワード・今日の一言・テーマ別アドバイス・星評価・ラッキー行動
+| 守護猫 | キーワード | アセット名 |
+|--------|------------|-----------|
+| みけ猫 | 好奇心 | `GuardianMikeNeko` |
+| しろ猫 | やさしさ | `GuardianShiroNeko` |
+| くろ猫 | 直感 | `GuardianKuroNeko` |
+| トラ猫 | チャレンジ | `GuardianToraNeko` |
+| ペルシャ猫 | ゆったり | `GuardianPersianNeko` |
+| サバ猫 | 信頼 | `GuardianSabaNeko` |
+| ルナ猫 | ひらめき | `GuardianLunaNeko` |
+| スター猫 | 希望 | `GuardianStarNeko` |
+| シャム猫 | 気品 | `GuardianSiamNeko` |
+| マーブル猫 | 祝福 | `GuardianMarbleNeko` |
+| ミスト猫 | 浄化 | `GuardianMistNeko` |
+| ガーデン猫 | 成長 | `GuardianGardenNeko` |
+| クローバー猫 | 幸運 | `GuardianCloverNeko` |
+| オーロラ猫 | 変化 | `GuardianAuroraNeko` |
+| パール猫 | 冷静 | `GuardianPearlNeko` |
+| ソラ猫 | 自由 | `GuardianSoraNeko` |
+
+**開封後に見えるもの:** 守護猫イラスト・名前・キーワード・今日の一言・テーマ別アドバイス・星評価・ラッキー行動
 
 #### 占いモード
 | メニュー | 遷移先 | 説明 |
@@ -171,7 +173,7 @@
 | デッキ名 | 日替わりタイトルをカプセル表示 |
 | カード表示 | 紫×ゴールドの裏面カードを**5枚**扇状に並べて表示 |
 | カードをタップ | 選んだ1枚が開き、今日の猫カードを表示 |
-| 表示内容 | 猫の種類・絵文字・キーワード・今日の一言 |
+| 表示内容 | 守護猫イラスト・名前・キーワード・今日の一言 |
 | 「占い結果を詳しく見る」 | 総合運・各運勢・メッセージ・ラッキー行動の詳細画面へ |
 | 「ホームに戻る」 | ホーム画面へ |
 
@@ -388,6 +390,7 @@
 |------|----------|-------------------|
 | アバター（円形） | `MeowAvatar` | `MeowAvatarView` |
 | 猫カード画面の大画像 | `MeowHero` | `MeowHeroView` |
+| 守護猫カード | `GuardianMikeNeko` など16種 | `GuardianCatCardView` |
 | 気分選択・過去ログ | `MoodVeryGood` など6種 | `MoodIconView` |
 
 - イラストの黒背景は透明化済み。UIのグラデーション背景に馴染む表示
@@ -400,14 +403,15 @@
 | カテゴリ | 主なファイル |
 |----------|-------------|
 | 画面 | `Views/Home/HomeHubView.swift`, `MoodFortuneView.swift` ほか |
-| テーマ・UI部品 | `Resources/AppTheme.swift`（`MeowAvatarView`, `MeowHeroView`, `MoodIconView`） |
+| テーマ・UI部品 | `Resources/AppTheme.swift`（`MeowAvatarView`, `MeowHeroView`, `MoodIconView`, `GuardianCatCardView`） |
 | 気分定義 | `Models/Enums/Mood.swift` |
 | 占い生成 | `Services/FortuneGenerator.swift`, `FortuneComposer.swift` |
 | 猫カード | `Services/CatCardGenerator.swift`, `CatCardSelectionStore.swift` |
 | 回数制限 | `Services/UsageLimitService.swift` |
 | AI | `Services/AIService.swift`, `firebase/functions/` |
 | 広告 | `Services/AdService.swift`, `Views/Ads/AdBannerView.swift` |
-| 画像アセット | `Assets.xcassets/`（`MeowAvatar`, `MeowHero`, `Mood*`） |
+| 画像アセット | `Assets.xcassets/`（`MeowAvatar`, `MeowHero`, `Mood*`, `Guardian*`） |
+| 守護猫素材 | `assets/guardian-cats/` |
 
 ---
 
