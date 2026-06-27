@@ -20,4 +20,16 @@ enum Mood: String, CaseIterable, Codable, Identifiable {
         case .irritated: "😾"
         }
     }
+
+    /// 気分用イラストアセット名（未設定の気分は絵文字表示）
+    var imageAssetName: String? {
+        switch self {
+        case .veryGood: "MoodVeryGood"
+        case .good: "MoodGood"
+        case .normal: "MoodNormal"
+        case .tired: "MoodTired"
+        case .anxious: "MoodAnxious"
+        case .irritated: "MoodIrritated"
+        }
+    }
 }
