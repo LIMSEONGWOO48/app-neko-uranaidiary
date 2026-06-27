@@ -628,3 +628,11 @@ App Store申請
 **AI猫カウンセラー兼日記アプリ**
 
 として継続利用とサブスク収益を実現する。
+
+---
+
+## 関連ドキュメント
+
+- [現行機能仕様](../specs/features.md)
+- [AI相談ロジック](../specs/ai-consultation.md)
+- [ドキュメント索引](../README.md)
