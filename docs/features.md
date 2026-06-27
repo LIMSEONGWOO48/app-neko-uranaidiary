@@ -188,6 +188,23 @@
 | 悩みジャンル | ✅ | 恋愛 / 仕事 / お金 / 人間関係 / 自己成長 / その他 |
 | 一言メモ | 任意 | 自由テキスト |
 
+#### 気分選択UI
+
+6つの気分は **絵文字ではなくミャオのイラスト**（`MoodIconView`）で表示。  
+各イラスト下部に気分ラベル（「とても良い」など）が入っているため、グリッド内では **ラベルテキストは非表示**。
+
+| 気分 | アセット名 |
+|------|-----------|
+| とても良い | `MoodVeryGood` |
+| 良い | `MoodGood` |
+| 普通 | `MoodNormal` |
+| 疲れた | `MoodTired` |
+| 不安 | `MoodAnxious` |
+| イライラ | `MoodIrritated` |
+
+- 2列グリッドでタップ選択。選択中は紫枠＋薄紫背景
+- `Mood.imageAssetName` でアセットを解決（`Models/Enums/Mood.swift`）
+
 #### 占い生成ロジック
 | 生成元 | 内容 |
 |--------|------|
@@ -263,7 +280,7 @@
 | 表示項目 | 説明 |
 |----------|------|
 | 日付 | 占いを行った日 |
-| 気分 | 絵文字 + ラベル |
+| 気分 | ミャオの気分イラスト（`MoodIconView`） |
 | 悩みジャンル | カテゴリバッジ |
 | メモ | 入力があれば表示 |
 | 各運勢スコア | 総合・恋愛・仕事・金運 |
@@ -359,10 +376,22 @@
 |------|------|
 | カラー | ラベンダーパープル（メイン）+ ゴールド（星・装飾） |
 | 背景 | クリーム × ラベンダーのグラデーション |
-| キャラ | 猫占い師ミャオ（`MeowAvatar` 画像アセット） |
+| キャラ | 猫占い師ミャオ（`MeowAvatar` / `MeowHero` 画像アセット） |
+| 気分アイコン | 6種のミャオイラスト（`MoodVeryGood` 〜 `MoodIrritated`） |
 | カードUI | 角丸 + 紫ボーダー + 軽いシャドウ |
 | チャット | ユーザー=紫、ミャオ=ピンク系吹き出し |
 | ボタン | 紫グラデーション + 影 |
+
+### 画像アセット（キャラ・気分）
+
+| 用途 | アセット | 表示コンポーネント |
+|------|----------|-------------------|
+| アバター（円形） | `MeowAvatar` | `MeowAvatarView` |
+| 猫カード画面の大画像 | `MeowHero` | `MeowHeroView` |
+| 気分選択・過去ログ | `MoodVeryGood` など6種 | `MoodIconView` |
+
+- イラストの黒背景は透明化済み。UIのグラデーション背景に馴染む表示
+- 気分イラストはラベル付きデザインのため、選択グリッドでは画像のみ表示
 
 ---
 
@@ -370,13 +399,15 @@
 
 | カテゴリ | 主なファイル |
 |----------|-------------|
-| 画面 | `Views/Home/HomeHubView.swift` ほか |
-| テーマ | `Resources/AppTheme.swift` |
+| 画面 | `Views/Home/HomeHubView.swift`, `MoodFortuneView.swift` ほか |
+| テーマ・UI部品 | `Resources/AppTheme.swift`（`MeowAvatarView`, `MeowHeroView`, `MoodIconView`） |
+| 気分定義 | `Models/Enums/Mood.swift` |
 | 占い生成 | `Services/FortuneGenerator.swift`, `FortuneComposer.swift` |
 | 猫カード | `Services/CatCardGenerator.swift`, `CatCardSelectionStore.swift` |
 | 回数制限 | `Services/UsageLimitService.swift` |
 | AI | `Services/AIService.swift`, `firebase/functions/` |
 | 広告 | `Services/AdService.swift`, `Views/Ads/AdBannerView.swift` |
+| 画像アセット | `Assets.xcassets/`（`MeowAvatar`, `MeowHero`, `Mood*`） |
 
 ---
 

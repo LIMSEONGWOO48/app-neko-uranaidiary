@@ -54,8 +54,13 @@ struct PastLogView: View {
                 Text(log.date, format: .dateTime.year().month().day())
                     .font(.headline)
                 Spacer()
-                Text("\(log.moodEnum.emoji) \(log.moodEnum.rawValue)")
-                    .font(.subheadline)
+                HStack(spacing: 6) {
+                    MoodIconView(mood: log.moodEnum, size: 36)
+                    if log.moodEnum.imageAssetName == nil {
+                        Text(log.moodEnum.rawValue)
+                            .font(.subheadline)
+                    }
+                }
             }
 
             Text(log.concernCategoryEnum.rawValue)

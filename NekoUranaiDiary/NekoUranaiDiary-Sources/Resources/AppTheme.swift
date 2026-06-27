@@ -112,6 +112,30 @@ struct MeowHeroView: View {
   }
 }
 
+struct MoodIconView: View {
+  let mood: Mood
+  var size: CGFloat = 56
+
+  private var frameHeight: CGFloat {
+    mood.imageAssetName == nil ? size : size * 1.45
+  }
+
+  var body: some View {
+    Group {
+      if let assetName = mood.imageAssetName {
+        Image(assetName)
+          .resizable()
+          .scaledToFit()
+          .frame(maxHeight: frameHeight)
+      } else {
+        Text(mood.emoji)
+          .font(.system(size: size * 0.55))
+      }
+    }
+    .frame(height: frameHeight)
+  }
+}
+
 struct TarotCardBackView: View {
   var index: Int
   var isSelected: Bool = false

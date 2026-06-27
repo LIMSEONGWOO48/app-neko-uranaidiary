@@ -81,10 +81,11 @@ struct MoodFortuneView: View {
                         selectedMood = mood
                     } label: {
                         VStack(spacing: 6) {
-                            Text(mood.emoji)
-                                .font(.title2)
-                            Text(mood.rawValue)
-                                .font(.subheadline)
+                            MoodIconView(mood: mood, size: 56)
+                            if mood.imageAssetName == nil {
+                                Text(mood.rawValue)
+                                    .font(.subheadline)
+                            }
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
